@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+
+# Generated project outputs
+portfolio_results.png
+model_prediction_metrics.csv
+portfolio_performance_metrics.csv
+
+# Optional generated folders
+data/
+cache/
+outputs/
