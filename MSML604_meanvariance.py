@@ -35,8 +35,8 @@ import cvxpy as cp
 
 TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "JPM", "GS", "JNJ", "PFE", "XOM", "CVX"]
 BENCHMARK_TICKERS = ["SPY", "QQQ"]  # Market benchmarks, not optimized portfolios
-START_DATE = "2018-01-01"
-END_DATE   = "2024-01-01"
+START_DATE = "2016-01-01"
+END_DATE   = "2026-01-01"
 RISK_FREE_RATE = 0.05          # annual
 LOOKBACK = 60                  # trading days for feature window
 N_LAGS = 5                     # lagged return features
@@ -593,9 +593,9 @@ def plot_results(results, cov, returns_oos, benchmark_returns=None):
         "ML-Enhanced Mean-Variance Portfolio Optimization",
         color=TEXT_COLOR, fontsize=14, y=0.98, fontweight="bold"
     )
-    plt.savefig("portfolio_results.png",
-                dpi=150, bbox_inches="tight", facecolor=fig.get_facecolor())
-    print("\nFigure saved -> portfolio_results.png")
+    plt.savefig("portfolio_results_2016_2026.png",
+            dpi=150, bbox_inches="tight", facecolor=fig.get_facecolor())
+    print("\nFigure saved → portfolio_results_2016_2026.png")
     plt.show()
 
 
@@ -643,8 +643,8 @@ def main():
     model_metrics = evaluate_models(models, scaler, X_te, y_te)
     print("\nHeld-out prediction metrics:")
     print(model_metrics.to_string(index=False, float_format=lambda x: f"{x:.6f}"))
-    model_metrics.to_csv("model_prediction_metrics.csv", index=False)
-    print("Model metrics saved -> model_prediction_metrics.csv")
+    model_metrics.to_csv("model_prediction_metrics_2016_2026.csv", index=False)
+    print("Model metrics saved -> model_prediction_metrics_2016_2026.csv")
 
     # --- Expected returns ---
     print("\nGenerating expected return estimates...")
@@ -684,8 +684,8 @@ def main():
 
     # --- Save report-ready result tables ---
     portfolio_metrics_df = metrics_to_dataframe(results, benchmark_metrics)
-    portfolio_metrics_df.to_csv("portfolio_performance_metrics.csv", index=False)
-    print("\nPortfolio metrics saved -> portfolio_performance_metrics.csv")
+    portfolio_metrics_df.to_csv("portfolio_performance_metrics_2016_2026.csv", index=False)
+    print("\nPortfolio metrics saved -> portfolio_performance_metrics_2016_2026.csv")
 
     if benchmark_metrics:
         print("\nBenchmark metrics:")
